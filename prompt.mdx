@@ -1,0 +1,81 @@
+Voici les prompts qui m'ont permit de créer ce mini projet. Bien entendu des ajustement manuels ont été requis
+
+1 - Prompt principale pour créer l'application :
+
+Crée un mini projet en Python qui utilise Flask pour le backend et Streamlit pour le frontend. Le projet doit être structuré avec les fichiers appropriés dans les dossiers correspondants et inclure un environnement virtuel (venv). Voici les spécifications détaillées :
+
+    Backend (dossier backend) :
+        Fichier app.py :
+            Utilise Flask pour créer une API REST.
+            Charge un modèle de machine learning à partir d'un fichier pickle (avocado-model.pkl).
+            Définit des fonctionnalités pour valider et prétraiter les données d'entrée.
+            Implémente une route /predict_price qui accepte des requêtes POST avec des données JSON et renvoie le prix prédit.
+            Gère les erreurs et les requêtes invalides.
+
+    Frontend (dossier frontend) :
+        Fichier app.py :
+            Utilise Streamlit pour créer une interface utilisateur.
+            Configure la page avec un titre et une icône.
+            Permet à l'utilisateur de saisir des valeurs pour différentes caractéristiques d'un avocat.
+            Envoie les données saisies à l'API Flask et affiche le prix prédit.
+            
+    Environnement virtuel :
+        Crée un environnement virtuel (venv) pour gérer les dépendances du projet.
+
+
+
+2 - Prompt pour affiner le backend
+
+Crée un fichier app.py dans le dossier backend pour une application Flask qui fait ce qui suit :
+
+    Importe les bibliothèques nécessaires :
+        Flask, request, jsonify de Flask.
+        pandas pour la manipulation des données.
+        pickle pour charger le modèle de machine learning.
+
+    Initialise l'application Flask :
+        Crée une instance de l'application Flask.
+
+    Charge le modèle de machine learning :
+        Charge un modèle sauvegardé à partir d'un fichier pickle (avocado-model.pkl).
+
+    Définit les fonctionnalités attendues :
+        Liste les caractéristiques numériques (NUMERIC_FEATURES).
+        Liste les caractéristiques catégorielles (CATEGORICAL_FEATURES).
+
+    Valide les données d'entrée :
+        Vérifie que toutes les caractéristiques requises sont présentes dans les données d'entrée.
+        Retourne un message d'erreur si des caractéristiques manquent.
+
+    Prétraite les données d'entrée :
+        Convertit les données d'entrée en un DataFrame pandas.
+        Convertit les caractéristiques numériques en type float.
+
+    Implémente une route /predict_price :
+        Accepte les requêtes POST avec des données JSON.
+        Valide et prétraite les données d'entrée.
+        Utilise le modèle pour prédire le prix.
+        Retourne le prix prédit sous forme de JSON.
+
+    Gère les erreurs.
+
+
+3 - Prompt spécifique pour le frontend
+
+Crée un fichier app.py dans le dossier frontend pour une application Streamlit qui fait ce qui suit :
+
+    Importe les bibliothèques nécessaires :
+        streamlit pour créer l'interface utilisateur.
+        requests pour envoyer des requêtes HTTP.
+
+    Configure la page Streamlit
+
+    Crée le titre de l'application.
+
+    Permet la saisie des données par l'utilisateur :
+        Affiche des champs de saisie pour les caractéristiques Quality1, Quality2, Quality3, Small Bags, Large Bags, XLarge Bags, year, type, et region.
+        Utilise des composants Streamlit appropriés comme number_input et selectbox.
+
+    Envoie les données à l'API Flask :
+        Lorsque l'utilisateur clique sur le bouton "Prédire le prix", envoie les données saisies à l'API Flask via une requête POST.
+        Affiche le prix prédit ou un message d'erreur en fonction de la réponse de l'API.
